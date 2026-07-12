@@ -9,7 +9,9 @@ export function connectSocket(): Socket {
 
   const token = useAuthStore.getState().accessToken;
 
-  socket = io('/', {
+  const socketUrl = import.meta.env.VITE_API_URL || '/';
+  
+  socket = io(socketUrl, {
     auth: { token },
     transports: ['websocket', 'polling'],
     reconnection: true,
