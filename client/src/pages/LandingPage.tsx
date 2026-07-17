@@ -28,78 +28,87 @@ export default function LandingPage() {
   };
 
   const features = [
-    { icon: <Lock size={20} />, title: 'End-to-End Encrypted', desc: 'Signal Protocol — server never sees your messages' },
-    { icon: <Clock size={20} />, title: '24h Ephemeral', desc: 'Accounts auto-expire — no digital footprint' },
-    { icon: <Trash2 size={20} />, title: 'Self-Destructing', desc: 'Messages vanish on both devices' },
-    { icon: <Eye size={20} />, title: 'Burn After Reading', desc: 'Messages delete after being opened once' },
-    { icon: <Shield size={20} />, title: 'Zero Knowledge', desc: 'We store encrypted data — we can\'t read it' },
-    { icon: <AlertTriangle size={20} />, title: 'No Metadata', desc: 'No IP logs, no device IDs, no location' },
+    { icon: <Lock size={20} strokeWidth={1.75} />, title: 'End-to-End Encrypted', desc: 'Signal Protocol — server never sees your messages', isHero: true },
+    { icon: <Trash2 size={20} strokeWidth={1.75} />, title: 'Self-Destructing', desc: 'Messages vanish on both devices', isHero: true },
+    { icon: <Clock size={20} strokeWidth={1.75} />, title: '24h Ephemeral', desc: 'Accounts auto-expire — no digital footprint', isHero: false },
+    { icon: <Eye size={20} strokeWidth={1.75} />, title: 'Burn After Reading', desc: 'Messages delete after being opened once', isHero: false },
+    { icon: <Shield size={20} strokeWidth={1.75} />, title: 'Zero Knowledge', desc: 'We store encrypted data — we can\'t read it', isHero: false },
+    { icon: <AlertTriangle size={20} strokeWidth={1.75} />, title: 'No Metadata', desc: 'No IP logs, no device IDs, no location', isHero: false },
   ];
 
 
   if (mode === 'landing') {
     return (
       <div className="min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-0 relative overflow-hidden bg-[var(--color-bg-primary)]">
-        {/* Dynamic Mesh Background */}
+        {/* Dynamic Mesh & Particles Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--color-purple-glow),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_var(--color-accent-glow),_transparent_50%)] opacity-30 animate-mesh"></div>
           <div className="hidden sm:block absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--color-accent)] opacity-[0.04] rounded-full blur-[140px] animate-[float_8s_ease-in-out_infinite]"></div>
           <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--color-accent-purple)] opacity-[0.04] rounded-full blur-[120px] animate-[float_10s_ease-in-out_infinite_2s]"></div>
+          {/* Particles */}
+          <div className="absolute top-1/4 left-1/3 w-1 h-1 bg-[var(--color-accent)] rounded-full opacity-20 blur-[1px] animate-drift"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-[var(--color-accent-purple)] rounded-full opacity-20 blur-[1px] animate-drift" style={{ animationDelay: '2s', animationDuration: '25s' }}></div>
+          <div className="absolute top-1/2 left-2/3 w-2 h-2 bg-[var(--color-accent)] rounded-full opacity-10 blur-[2px] animate-drift" style={{ animationDelay: '5s', animationDuration: '18s' }}></div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-2xl w-full text-center animate-[slide-up_0.6s_cubic-bezier(0.16,1,0.3,1)]">
+        <div className="relative z-10 max-w-4xl w-full flex flex-col items-center text-center px-4 sm:px-6 animate-[slide-up_0.6s_cubic-bezier(0.16,1,0.3,1)]">
           {/* Logo */}
-          <div className="mb-6 sm:mb-8 flex flex-col items-center justify-center gap-4 sm:gap-5">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-purple)] flex items-center justify-center shadow-[0_0_30px_var(--color-accent-glow)] relative before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/20 before:pointer-events-none">
-              <Shield size={28} className="sm:hidden text-[var(--color-bg-primary)] drop-shadow-md" strokeWidth={2.5} />
-              <Shield size={32} className="hidden sm:block text-[var(--color-bg-primary)] drop-shadow-md" strokeWidth={2.5} />
+          <div className="mb-8 flex flex-col items-center justify-center gap-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-purple)] flex items-center justify-center shadow-[0_0_30px_var(--color-accent-glow)] relative before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/20 before:pointer-events-none">
+              <Shield size={32} className="sm:hidden text-[var(--color-bg-primary)] drop-shadow-md" strokeWidth={2.5} />
+              <Shield size={40} className="hidden sm:block text-[var(--color-bg-primary)] drop-shadow-md" strokeWidth={2.5} />
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--color-text-primary)] to-[var(--color-text-secondary)]">Null</span>
               <span className="text-gradient-brand">Chat</span>
             </h1>
           </div>
 
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mb-1.5 sm:mb-2 font-light tracking-wide">
+          <p className="mt-4 text-lg sm:text-xl text-[var(--color-text-secondary)]/90 font-light tracking-wide">
             Ephemeral. Encrypted. Gone.
           </p>
-          <p className="text-xs sm:text-sm text-[var(--color-text-muted)] mb-8 sm:mb-10 max-w-sm sm:max-w-md mx-auto leading-relaxed px-2">
+          <p className="mt-4 text-sm sm:text-base text-[var(--color-text-muted)] max-w-md mx-auto leading-relaxed text-balance">
             Privacy-focused messaging where you exist only temporarily. No traces. No logs. No compromises.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-10 sm:mb-14 px-2 sm:px-0">
+          <div className="mt-10 mb-16 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-2 sm:px-0">
             <button
               onClick={() => { clearError(); setMode('login'); }}
-              className="btn btn-secondary px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base w-full sm:w-auto"
+              className="btn btn-secondary px-8 py-3.5 rounded-xl text-base w-full sm:w-auto h-[52px]"
             >
               Login
             </button>
             <button
               onClick={() => { clearError(); setMode('register'); }}
-              className="btn btn-primary px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base w-full sm:w-auto group"
+              className="btn btn-primary px-8 py-3.5 rounded-xl text-base w-full sm:w-auto h-[52px] group"
             >
               <span className="relative z-10">Create Temporary Account</span>
             </button>
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {features.map((f, i) => (
               <div
                 key={i}
-                className="card card-glass p-4 sm:p-5 text-left hover:border-[var(--color-accent)]/40 group hover:-translate-y-1 hover:shadow-[0_8px_30px_-10px_var(--color-accent-glow)] stagger-item"
+                className={`card flex flex-col h-full card-glass ${f.isHero ? 'bg-[var(--color-accent)]/5 border-[var(--color-accent)]/30' : ''} p-5 sm:p-6 text-left hover:border-[var(--color-accent)]/50 group hover:scale-[1.02] hover:shadow-[0_8px_30px_-10px_var(--color-accent-glow)] transition-all duration-300 stagger-item`}
                 style={{ animationDelay: `${150 + i * 80}ms` }}
               >
-                <div className="text-[var(--color-text-muted)] mb-2 sm:mb-3 group-hover:text-[var(--color-accent)] transition-all duration-300 transform group-hover:scale-110 origin-left">
+                <div className={`mb-4 transition-all duration-300 transform group-hover:scale-110 origin-left ${f.isHero ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)]'}`}>
                   {f.icon}
                 </div>
-                <h3 className="text-xs sm:text-sm font-semibold text-[var(--color-text-primary)] mb-0.5 sm:mb-1">{f.title}</h3>
-                <p className="text-[10px] sm:text-xs text-[var(--color-text-muted)] leading-relaxed">{f.desc}</p>
+                <h3 className="text-sm font-semibold text-[var(--color-text-primary)] mb-2">{f.title}</h3>
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed flex-grow">{f.desc}</p>
               </div>
             ))}
           </div>
+          
+          {/* Footer */}
+          <footer className="w-full mt-24 pb-8 pt-8 flex items-center justify-center text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border)]/50 animate-[fade-in_1s_ease-out_0.5s_both]">
+            <div className="flex items-center">&copy; {new Date().getFullYear()} NullChat. All rights reserved.</div>
+          </footer>
 
         </div>
       </div>
